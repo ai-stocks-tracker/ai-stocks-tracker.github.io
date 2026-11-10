@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>US Tech Market Map</title>
+<link rel="stylesheet" href="kit.css">
+<link rel="stylesheet" href="page.css">
+<script>
+  // Pick day or night before the page paints: the saved choice, else the device setting.
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("mm-theme"); } catch (e) {}
+    if (t !== "dark" && t !== "light") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.dataset.theme = t;
+  })();
+</script>
+</head>
+<body>
+<div class="page">
+  <header class="top">
+    <div>
+      <h1><span class="mark"></span>US tech and AI market map</h1>
+      <p class="label" id="asof">Loading</p>
+    </div>
+    <button type="button" class="themebtn" id="themeBtn" aria-label="Switch between day and night mode">Night mode</button>
+  </header>
+
+  <nav class="toolbar" aria-label="Filters">
+    <div class="seg" role="group" aria-label="Universe">
+      <button type="button" data-universe="market">Market map</button>
+      <button type="button" data-universe="ai">AI cluster</button>
+    </div>
+    <div class="seg" role="group" aria-label="Period">
+      <button type="button" data-period="1D">1D</button>
+      <button type="button" data-period="1W">1W</button>
+      <button type="button" data-period="1M">1M</button>
+      <button type="button" data-period="3M">3M</button>
+      <button type="button" data-period="YTD">YTD</button>
+      <button type="button" data-period="1Y">1Y</button>
+    </div>
+    <div class="day">
+      <button type="button" id="prevDay" aria-label="Previous trading day">&#8249;</button>
+      <input type="range" id="dateSlider" min="0" max="0" value="0" aria-label="Trading day">
+      <button type="button" id="nextDay" aria-label="Next trading day">&#8250;</button>
+      <span class="mono" id="dateLabel"></span>
+      <button type="button" id="latest">Latest</button>
+    </div>
+  </nav>
+
+  <section class="stats" id="stats" aria-label="Summary"></section>
+
+  <section>
+    <div class="head"><h2 id="mapTitle">Market map</h2><div class="scale mono" id="scale" aria-hidden="true"></div></div>
+    <p class="caption" id="mapNote"></p>
+    <div id="map" class="map"></div>
+  </section>
+
+  <section>
+    <div class="head"><h2 id="lineTitle">Basket vs benchmarks</h2></div>
+    <p class="caption" id="lineNote"></p>
+    <div id="line" class="chart"></div>
+    <div class="legend" id="legend"></div>
+  </section>
+
+  <section>
+    <div class="head"><h2 id="tableTitle">By group</h2></div>
+    <div class="tablewrap"><table id="groupTable"></table></div>
+  </section>
+
+  <p class="source" id="foot"></p>
+  <p class="source">For questions, contact me on GitHub:
+    <a href="https://github.com/valeriolomonaco" rel="noopener">github.com/valeriolomonaco</a></p>
+</div>
+
+<div class="tip" id="tip" role="tooltip" hidden></div>
+
+<script src="d3.min.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
