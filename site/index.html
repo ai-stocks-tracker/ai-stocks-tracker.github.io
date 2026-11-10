@@ -11,7 +11,7 @@
   (function () {
     var t = null;
     try { t = localStorage.getItem("mm-theme"); } catch (e) {}
-    if (t !== "dark" && t !== "light") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    if (t !== "night" && t !== "day") t = matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day";
     document.documentElement.dataset.theme = t;
   })();
 </script>

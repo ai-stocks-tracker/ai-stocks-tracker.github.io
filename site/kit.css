@@ -38,6 +38,9 @@
   --red-tint: #FBEFEE;
   --orange: #CC7318;
   --orange-tint: #FBF1E6;
+  --on-dark: #FFFFFF;
+  --on-dark-accent: #DCE7F5;
+  --table-rule: #13294B;
   --font: "Manrope", Arial, sans-serif;
   --mono: "Courier Prime", Consolas, monospace;
   --font-doc: "Times New Roman", Times, serif;
@@ -92,22 +95,22 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 2em 0; }
 table { border-collapse: collapse; width: 100%; font-size: 1rem; }
 th, td { text-align: left; padding: .4em .7em; border-bottom: 1px solid var(--border); vertical-align: top; }
 /* booktabs everywhere: no fills, rule above and below the header, rule under the last row */
-table { border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
+table { border-top: 1.5px solid var(--table-rule); border-bottom: 1.5px solid var(--table-rule); }
 th, td { border: 0; }
-thead th { font-weight: 600; border-bottom: 1px solid var(--ink); }
+thead th { font-weight: 600; border-bottom: 1px solid var(--table-rule); }
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 td.c, th.c { text-align: center; font-variant-numeric: tabular-nums; }
 tr.se td { color: var(--muted); font-size: .875em; padding-top: 0; }
 tr.highlight td { background: var(--blue-light); }
-.doc table { border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.doc table { border-top: 1px solid var(--table-rule); border-bottom: 1px solid var(--table-rule); }
 
 /* ---- components: all rectangles, no rounding, hairlines --------------------- */
 .callout {
-  background: var(--ink); color: var(--white);
+  background: var(--ink); color: var(--on-dark);
   border-left: 3px solid var(--blue); border-radius: var(--radius);
   padding: .8em 1.1em; margin: .8em 0;
 }
-.callout .title { color: var(--blue-light); font-weight: 600; display: block; margin-bottom: .25em; }
+.callout .title { color: var(--on-dark-accent); font-weight: 600; display: block; margin-bottom: .25em; }
 .note { background: var(--surface); border-left: 2px solid var(--blue); padding: .75em 1em; border-radius: var(--radius); }
 .chip {
   display: inline-block; background: var(--blue-light); color: var(--blue);
@@ -116,9 +119,9 @@ tr.highlight td { background: var(--blue-light); }
 }
 .card { border: 1px solid var(--border); border-top: 2px solid var(--blue); border-radius: var(--radius); padding: 1em 1.25em; background: var(--white); }
 .card .title { color: var(--navy); font-weight: 600; display: block; margin: .4em 0 .25em; }
-.card.dark { background: var(--ink); color: var(--white); border-color: var(--ink); }
-.card.dark .title { color: var(--white); }
-.card.dark .chip { background: var(--blue); color: var(--white); }
+.card.dark { background: var(--ink); color: var(--on-dark); border-color: var(--ink); }
+.card.dark .title { color: var(--on-dark); }
+.card.dark .chip { background: var(--blue); color: var(--on-dark); }
 .alert { color: var(--red); font-weight: 600; }
 .do    { background: var(--green-tint);  border-left: 3px solid var(--green);  padding: .6em 1em; }
 .avoid { background: var(--red-tint);    border-left: 3px solid var(--red);    padding: .6em 1em; }
@@ -128,7 +131,7 @@ tr.highlight td { background: var(--blue-light); }
 .btn {
   display: inline-block; font: inherit; font-weight: 500; line-height: 1;
   padding: .75em 1.4em; border-radius: var(--radius); cursor: pointer; text-decoration: none;
-  border: 1px solid var(--blue); background: var(--blue); color: var(--white);
+  border: 1px solid var(--blue); background: var(--blue); color: var(--on-dark);
 }
 .btn:hover { background: var(--ink); border-color: var(--ink); }
 .btn.secondary { background: transparent; color: var(--blue); }
@@ -183,14 +186,14 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue); outl
 .slide .sec-rule { position: absolute; left: 58px; top: 312px; width: 844px; height: 1px; background: var(--blue); }
 .slide .sec-sub { position: absolute; left: 74px; top: 328px; width: 828px; font-size: 26px; color: var(--muted); line-height: 1.2; }
 
-.slide.dark { background: var(--ink); color: var(--white); }
-.slide.dark .wordmark { position: absolute; left: 58px; top: 54px; font-family: var(--mono); font-size: 13px; color: var(--white); }
+.slide.dark { background: var(--ink); color: var(--on-dark); }
+.slide.dark .wordmark { position: absolute; left: 58px; top: 54px; font-family: var(--mono); font-size: 13px; color: var(--on-dark); }
 .slide.dark .display  { position: absolute; left: 58px; top: 186px; width: 844px; height: 64px; display: flex; align-items: flex-end;
-                         font-size: 48px; font-weight: 600; color: var(--white); line-height: 1.1; letter-spacing: -.01em; }
-.slide.dark .subtitle { position: absolute; left: 58px; top: 262px; width: 844px; font-size: 24px; color: var(--blue-light); }
-.slide.dark .speakers { position: absolute; left: 58px; top: 322px; width: 844px; font-size: 20px; color: var(--white); line-height: 1.25; }
+                         font-size: 48px; font-weight: 600; color: var(--on-dark); line-height: 1.1; letter-spacing: -.01em; }
+.slide.dark .subtitle { position: absolute; left: 58px; top: 262px; width: 844px; font-size: 24px; color: var(--on-dark-accent); }
+.slide.dark .speakers { position: absolute; left: 58px; top: 322px; width: 844px; font-size: 20px; color: var(--on-dark); line-height: 1.25; }
 .slide.dark .meta     { position: absolute; left: 58px; top: 480px; width: 560px; height: 40px; display: flex; align-items: flex-end;
-                         font-family: var(--mono); font-size: 12px; color: var(--blue-light); }
+                         font-family: var(--mono); font-size: 12px; color: var(--on-dark-accent); }
 
 /* ---- document page (A4 at 72 dpi: 595 x 842 "points" rendered as px) ------------ */
 .doc {
@@ -211,6 +214,66 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue); outl
 .doc .source { font-family: var(--font-doc); font-size: 10px; color: var(--muted); line-height: 1.1; }
 .doc table { font-size: 10px; line-height: 1.2; margin-top: 6px; }
 .doc th, .doc td { padding: 3px 5px; }
-.doc thead th { font-weight: 700; border-bottom: .5px solid var(--ink); }
+.doc thead th { font-weight: 700; border-bottom: .5px solid var(--table-rule); }
 .doc .footer { position: absolute; left: 71px; right: 71px; bottom: 36px;
                 display: flex; justify-content: space-between; font-size: 9px; color: var(--muted); }
+
+/* ---- night mode (tokens.json "night", from GitHub's dark theme) ------------------ */
+[data-theme="night"] {
+  color-scheme: dark;
+  --white: #0D1117;
+  --surface: #151B23;
+  --border: #3D444D;
+  --text: #D1D7E0;
+  --muted: #9198A1;
+  --navy: #F0F6FC;
+  --ink: #010409;
+  --ink-deep: #010409;
+  --blue: #4493F8;
+  --blue-light: #16263D;
+  --green: #3FB950;
+  --green-tint: #12261E;
+  --red: #F85149;
+  --red-tint: #25171C;
+  --orange: #F0883E;
+  --orange-tint: #2A1C12;
+  --on-dark: #F0F6FC;
+  --on-dark-accent: #79C0FF;
+  --table-rule: #9198A1;
+  --series-1: #4493F8;
+  --series-2: #F0F6FC;
+  --series-3: #9198A1;
+  --series-4: #F0883E;
+  --series-5: #3FB950;
+  --series-6: #F85149;
+}
+[data-theme="night"] body, body[data-theme="night"] { background: var(--white); color: var(--text); }
+/* a Word page is printed: it keeps the day palette inside a night page */
+[data-theme="night"] .doc {
+  color-scheme: light;
+  --ink: #13294B;
+  --ink-deep: #0F2240;
+  --navy: #13294B;
+  --blue: #3C62B3;
+  --blue-light: #DCE7F5;
+  --surface: #F4F5F7;
+  --border: #D9DCE1;
+  --text: #1A1D23;
+  --muted: #4B5563;
+  --white: #FFFFFF;
+  --green: #2F7D5B;
+  --green-tint: #EAF4EF;
+  --red: #B3362F;
+  --red-tint: #FBEFEE;
+  --orange: #CC7318;
+  --orange-tint: #FBF1E6;
+  --on-dark: #FFFFFF;
+  --on-dark-accent: #DCE7F5;
+  --table-rule: #13294B;
+  --series-1: #3C62B3;
+  --series-2: #13294B;
+  --series-3: #4B5563;
+  --series-4: #CC7318;
+  --series-5: #2F7D5B;
+  --series-6: #B3362F;
+}

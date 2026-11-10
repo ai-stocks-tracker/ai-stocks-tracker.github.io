@@ -24,16 +24,14 @@
 
   // ---------- helpers ----------
   const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-  // Kit tokens (kit.css), then the chart palette for day or night. Night tints are mixes of kit tokens.
-  const K = Object.fromEntries(["ink", "ink-deep", "blue", "blue-light", "border", "text", "muted", "white", "green", "red", "orange"]
-    .map((n) => [n, css("--" + n)]));
-  const mix = (a, b, t) => d3.interpolateRgb(a, b)(t);
-  const isDark = () => document.documentElement.dataset.theme === "dark";
-  const palette = () => isDark()
-    ? { up: K.green, down: K.red, mid: mix(K.ink, K["blue-light"], 0.2), ink: K.text, bg: K["ink-deep"], fg2: K["blue-light"],
-        series: [mix(K.blue, K.white, 0.35), K.white, mix(K.muted, K.white, 0.4), K.orange] }
-    : { up: K.green, down: K.red, mid: K.border, ink: K.text, bg: K.white, fg2: K.muted,
-        series: [K.blue, K.ink, K.muted, K.orange] };
+  // Chart colours, read live from the kit tokens, which kit.css swaps for night mode.
+  // ink / light: tile text on bright and on dark fills.
+  const isDark = () => document.documentElement.dataset.theme === "night";
+  const palette = () => ({
+    up: css("--green"), down: css("--red"), mid: css("--border"), bg: css("--white"), fg2: css("--muted"),
+    ink: isDark() ? css("--white") : css("--text"), light: css("--on-dark"),
+    series: ["--series-1", "--series-2", "--series-3", "--series-4"].map(css),
+  });
   let C = palette();
   const sign = (x) => (x >= 0 ? "+" : "−");
   const fmtPct = (x, d = 2) => (x == null || !isFinite(x)) ? "n/a" : sign(x) + Math.abs(x * 100).toFixed(d) + "%";
@@ -70,7 +68,7 @@
   const fillFor = (col, r) => r == null ? C.mid : col(r);
   function inkOn(fill) {
     const c = d3.rgb(fill), lum = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
-    return 0.2126 * lum(c.r) + 0.7152 * lum(c.g) + 0.0722 * lum(c.b) > 0.3 ? C.ink : "#FFFFFF";
+    return 0.2126 * lum(c.r) + 0.7152 * lum(c.g) + 0.0722 * lum(c.b) > 0.3 ? C.ink : C.light;
   }
 
   // ---------- tooltip ----------
@@ -289,14 +287,14 @@
   // Day / night: the button saves the choice; without one, follow the device setting as it changes.
   const setTheme = (t) => { document.documentElement.dataset.theme = t; render(); };
   document.getElementById("themeBtn").addEventListener("click", () => {
-    const t = isDark() ? "light" : "dark";
+    const t = isDark() ? "day" : "night";
     try { localStorage.setItem("mm-theme", t); } catch (e) { /* ignore */ }
     setTheme(t);
   });
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
     let saved = null;
     try { saved = localStorage.getItem("mm-theme"); } catch (err) { /* ignore */ }
-    if (!saved) setTheme(e.matches ? "dark" : "light");
+    if (saved !== "night" && saved !== "day") setTheme(e.matches ? "night" : "day");
   });
 
   document.getElementById("foot").textContent = "Source: " + D.source + ", built " + D.built +

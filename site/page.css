@@ -1,15 +1,9 @@
 /* Layout for the market map. Colours, fonts and components come from kit.css (Personal Style Kit).
-   Day and night: the page uses the role variables below; night mode swaps them for the kit's dark-slide
-   colours (ink-deep background, white text, blue-light secondary text). --line-night is ink mixed 45 %
-   toward blue, a hairline that stays visible on navy. */
+   Night mode is the kit's own: <html data-theme="night"> swaps every token for GitHub's dark palette,
+   so the role names below follow automatically. */
 :root {
   --bg: var(--white); --fg: var(--text); --fg2: var(--muted); --line: var(--border);
-  --head: var(--navy); --rulec: var(--ink); --accent: var(--blue); --hover: var(--blue-light);
-}
-:root[data-theme="dark"] {
-  --bg: var(--ink-deep); --fg: var(--white); --fg2: var(--blue-light); --line: #26437A;
-  --head: var(--white); --rulec: var(--blue-light); --accent: var(--blue-light); --hover: var(--ink);
-  color-scheme: dark;
+  --head: var(--navy); --rulec: var(--table-rule); --accent: var(--blue); --hover: var(--blue-light);
 }
 
 * { box-sizing: border-box; }
@@ -35,7 +29,7 @@ thead th { border-bottom-color: var(--rulec); }
 .toolbar button, .themebtn { font-weight: 500; font-size: .9375rem; padding: .45em .8em; cursor: pointer;
   background: var(--bg); color: var(--accent); border-color: var(--line); }
 .toolbar button:hover, .themebtn:hover { background: var(--hover); }
-.toolbar button.on { background: var(--blue); border-color: var(--blue); color: var(--white); position: relative; }
+.toolbar button.on { background: var(--blue); border-color: var(--blue); color: var(--on-dark); position: relative; }
 .themebtn { flex: none; font-size: .875rem; }
 .day { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 .day input[type=range] { width: 200px; padding: 0; border: 0; background: transparent; accent-color: var(--blue); }
