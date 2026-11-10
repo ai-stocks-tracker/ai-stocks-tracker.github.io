@@ -51,5 +51,4 @@ example `BRK-B`) and run it again.
 GitHub pauses scheduled workflows in a public repository after 60 days without commits; re-enable
 it with one click in the Actions tab.
 
-Day and night mode follow the device setting; the button in the header switches and remembers
-the choice.
+The page opens in day mode; the Night mode button in the header switches and remembers the choice.

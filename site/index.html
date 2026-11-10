@@ -7,11 +7,11 @@
 <link rel="stylesheet" href="kit.css">
 <link rel="stylesheet" href="page.css">
 <script>
-  // Pick day or night before the page paints: the saved choice, else the device setting.
+  // Pick day or night before the page paints: the saved choice, else day.
   (function () {
     var t = null;
     try { t = localStorage.getItem("mm-theme"); } catch (e) {}
-    if (t !== "night" && t !== "day") t = matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day";
+    if (t !== "night") t = "day";
     document.documentElement.dataset.theme = t;
   })();
 </script>

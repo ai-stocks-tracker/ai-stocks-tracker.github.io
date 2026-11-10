@@ -284,17 +284,12 @@
     if (w !== lastW) { lastW = w; clearTimeout(rt); rt = setTimeout(render, 80); }
   }).observe(document.getElementById("map"));
 
-  // Day / night: the button saves the choice; without one, follow the device setting as it changes.
-  const setTheme = (t) => { document.documentElement.dataset.theme = t; render(); };
+  // Day / night: day by default; the button switches and remembers the choice.
   document.getElementById("themeBtn").addEventListener("click", () => {
     const t = isDark() ? "day" : "night";
     try { localStorage.setItem("mm-theme", t); } catch (e) { /* ignore */ }
-    setTheme(t);
-  });
-  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
-    let saved = null;
-    try { saved = localStorage.getItem("mm-theme"); } catch (err) { /* ignore */ }
-    if (saved !== "night" && saved !== "day") setTheme(e.matches ? "night" : "day");
+    document.documentElement.dataset.theme = t;
+    render();
   });
 
   document.getElementById("foot").textContent = "Source: " + D.source + ", built " + D.built +
