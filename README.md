@@ -52,3 +52,16 @@ GitHub pauses scheduled workflows in a public repository after 60 days without c
 it with one click in the Actions tab.
 
 The page opens in day mode; the Night mode button in the header switches and remembers the choice.
+
+## License
+
+The code is released under the MIT License, see `LICENSE`. It covers this project's own code only.
+Bundled third-party files keep their own licenses, which ship next to them:
+
+| Files | License |
+|---|---|
+| `site/d3.min.js` | d3 7.9.0, ISC License, see `site/d3.LICENSE.txt` |
+| `site/fonts/*.ttf` | Manrope and Courier Prime, SIL Open Font License 1.1, see `site/fonts/OFL.txt` |
+
+Price data in `site/data.js` comes from Yahoo Finance and is not covered by any license here;
+company names belong to their owners.
