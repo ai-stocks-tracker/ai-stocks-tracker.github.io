@@ -66,14 +66,14 @@ AI = {
     "Chips & compute": {
         "NVDA": "Nvidia", "AVGO": "Broadcom", "TSM": "TSMC", "AMD": "AMD",
         "MU": "Micron", "ARM": "Arm", "MRVL": "Marvell", "QCOM": "Qualcomm",
-        "INTC": "Intel",
+        "INTC": "Intel", "CBRS": "Cerebras",
     },
     "Chip equipment": {
         "ASML": "ASML", "AMAT": "Applied Materials", "LRCX": "Lam Research", "KLAC": "KLA",
     },
     "Hyperscalers & models": {
         "MSFT": "Microsoft", "GOOGL": "Alphabet", "AMZN": "Amazon", "META": "Meta",
-        "ORCL": "Oracle",
+        "ORCL": "Oracle", "ANT": "Anthropic", "SPCX": "SpaceX (xAI)",
     },
     "Servers, network & neoclouds": {
         "ANET": "Arista", "DELL": "Dell", "SMCI": "Supermicro", "CRWV": "CoreWeave",
