@@ -1,6 +1,6 @@
 # US tech and AI market map
 
-A market heatmap of about 65 US large caps by sector, plus a separate AI cluster of 36 companies in
+A market heatmap of about 65 US large caps by sector, plus a separate AI cluster of nearly 40 companies in
 six layers of the AI value chain. Tile size is market cap, colour is the return over the chosen
 period (green up, red down). The page runs entirely in the browser; nothing needs a server.
 

@@ -62,11 +62,13 @@ MARKET = {
 }
 
 # AI cluster, grouped by layer of the AI value chain.
+# NSCL (Nscale) is listed ahead of its NYSE debut. A ticker with no prices yet is
+# skipped, so Nscale appears on the first build after it starts trading.
 AI = {
     "Chips & compute": {
         "NVDA": "Nvidia", "AVGO": "Broadcom", "TSM": "TSMC", "AMD": "AMD",
-        "MU": "Micron", "ARM": "Arm", "MRVL": "Marvell", "QCOM": "Qualcomm",
-        "INTC": "Intel", "CBRS": "Cerebras",
+        "MU": "Micron", "SKHY": "SK hynix", "ARM": "Arm", "MRVL": "Marvell",
+        "QCOM": "Qualcomm", "INTC": "Intel", "CBRS": "Cerebras",
     },
     "Chip equipment": {
         "ASML": "ASML", "AMAT": "Applied Materials", "LRCX": "Lam Research", "KLAC": "KLA",
@@ -77,7 +79,7 @@ AI = {
     },
     "Servers, network & neoclouds": {
         "ANET": "Arista", "DELL": "Dell", "SMCI": "Supermicro", "CRWV": "CoreWeave",
-        "NBIS": "Nebius",
+        "NBIS": "Nebius", "NSCL": "Nscale",
     },
     "Power & cooling": {
         "GEV": "GE Vernova", "VRT": "Vertiv", "ETN": "Eaton", "CEG": "Constellation",
